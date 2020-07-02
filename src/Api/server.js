@@ -13,7 +13,6 @@ mongoose.connect(config.DB, {useNewUrlParser: true, useUnifiedTopology: true}).t
     err=> {console.log('cannot connect to the database' + err)}
 );
 
-
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
