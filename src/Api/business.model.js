@@ -1,4 +1,4 @@
-const mongoose = require(mongoose);
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Business = new Schema({
@@ -15,4 +15,4 @@ let Business = new Schema({
     collection: 'business'
 });
 
-module.exports = mongoose.module(Business, Business);
+module.exports = mongoose.model('Business', Business);

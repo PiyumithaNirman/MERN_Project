@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const mongoose = require('mongoose');
 const config = require('./db.js');
+const businessRoutes = require('./business.route');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, {useNewUrlParser: true, useUnifiedTopology: true}).then(
@@ -16,6 +17,8 @@ mongoose.connect(config.DB, {useNewUrlParser: true, useUnifiedTopology: true}).t
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+app.use('/business', businessRoutes);
 
 app.listen(PORT, function () {
     console.log('Server is running on port : ', PORT);

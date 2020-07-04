@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
+import axios from 'axios';
 
 export default class create extends Component {
 
@@ -38,11 +38,18 @@ export default class create extends Component {
 
     onSubmit(e){
         e.preventDefault();
-        console.log(`The values are ${this.state.person_name}, ${this.state.business_name},and ${this.state.business_nic_number}`)
-        this.setState = ({
-            person_name:'',
-            business_name:'',
-            business_nic_number:''
+        const obj = {
+            person_name : this.state.person_name,
+            business_name : this.state.business_name,
+            business_nic_number : this.state.business_nic_number
+        };
+
+        axios.post('http://localhost:4000/business/add', obj).then(res => console.log(res.date));
+
+        this.setState({
+            person_name : '',
+            business_name : '',
+            business_nic_number : ''
         })
     }
 
@@ -77,7 +84,7 @@ export default class create extends Component {
                           />
                 </div>
                 <div className="form-group">
-                    <input type="text" value="Register Business" className="btn btn-primary"/>
+                    <input type="submit" value="Register Business" className="btn btn-primary"/>
                 </div>
             </form>
         </div>
