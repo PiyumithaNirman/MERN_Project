@@ -17,7 +17,8 @@ businessRoutes.post("/add", (req, res, next) => {
         });
     });
 
-    businessRoutes.route('/').get(function (req, res){
+    businessRoutes.get("/", (req, res, next) =>{
+        console.log("calling get API")
         Business.find(function(err, business){
             if(err)
               console.log(err);
